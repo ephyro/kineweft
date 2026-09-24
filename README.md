@@ -2,6 +2,9 @@
   <img src="assets/kineweft-logo.svg" width="680" alt="Kineweft — Motion, structured">
 
   **Open-source motion design controlled by humans and AI agents.**
+
+  [![CI](https://github.com/ephyro/kineweft/actions/workflows/ci.yml/badge.svg)](https://github.com/ephyro/kineweft/actions/workflows/ci.yml)
+  [![License](https://img.shields.io/badge/license-Apache--2.0-C89B52.svg)](LICENSE)
 </div>
 
 Kineweft is a local TypeScript motion engine. A versioned JSON document describes a composition; the CLI and MCP server call the same validated operations to edit it and render repeatable frames. Project files never execute code.

@@ -4,6 +4,12 @@
   "private": true,
   "description": "Open-source motion design controlled by humans and AI agents.",
   "keywords": ["motion-design", "video", "mcp", "ai-agents", "typescript"],
+  "homepage": "https://github.com/ephyro/kineweft#readme",
+  "bugs": { "url": "https://github.com/ephyro/kineweft/issues" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ephyro/kineweft.git"
+  },
   "license": "Apache-2.0",
   "type": "module",
   "engines": { "node": ">=24" },
