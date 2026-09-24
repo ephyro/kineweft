@@ -10,3 +10,4 @@ examples/c6-corvette.kineweft.json
 
 # Curated documentation images are tracked.
 !docs/*.png
+!docs/*.mp4

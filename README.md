@@ -9,9 +9,15 @@
 
 Kineweft is a local TypeScript motion engine. A versioned JSON document describes a composition; the CLI and MCP server call the same validated operations to edit it and render repeatable frames. Project files never execute code.
 
+## Demo
+
 <div align="center">
-  <img src="docs/demo-preview.png" width="300" alt="A vertical motion design rendered by Kineweft">
+  <a href="docs/kineweft-linkedin-demo.mp4">
+    <img src="docs/kineweft-linkedin-contact-sheet.png" width="900" alt="Five scenes from the Kineweft motion engine demo">
+  </a>
 </div>
+
+Watch the [13-second Kineweft demo](docs/kineweft-linkedin-demo.mp4), then inspect or edit its declarative [project source](examples/linkedin-launch.kineweft.json). The video was rendered locally by Kineweft at 1080×1350, 24 FPS, with no cloud service.
 
 ## Requirements
 
