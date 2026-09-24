@@ -1,0 +1,26 @@
+{
+  "name": "kineweft",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open-source motion design controlled by humans and AI agents.",
+  "keywords": ["motion-design", "video", "mcp", "ai-agents", "typescript"],
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "bin": { "kineweft": "./dist/cli.js" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc --noEmit -p tsconfig.json",
+    "start": "node dist/cli.js",
+    "mcp": "node dist/mcp.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.1.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "typescript": "^5.9.3"
+  }
+}

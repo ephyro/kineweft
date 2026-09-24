@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.mp4
+*.png
+.DS_Store
+
+# Local user media and experiments are not redistributable by default.
+examples/assets/
+examples/c6-corvette.kineweft.json
+
+# Curated documentation images are tracked.
+!docs/*.png

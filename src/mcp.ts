@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+import { McpServer } from '@modelcontextprotocol/server';
+import { serveStdio } from '@modelcontextprotocol/server/stdio';
+import { z } from 'zod';
+import { addElement, initProject, inspectProject, previewProject, renderProject, updateElement } from './core.js';
+import { elementSchema } from './model.js';
+
+const result = (value: unknown) => ({ content: [{ type: 'text' as const, text: JSON.stringify(value, null, 2) }] });
+const withErrors = async (fn: () => Promise<unknown>) => { try { return result(await fn()); } catch (e) { return { isError: true, content: [{ type: 'text' as const, text: e instanceof Error ? e.message : String(e) }] }; } };
+function buildServer() {
+  const server = new McpServer({ name: 'kineweft', version: '0.1.0' });
+  server.registerTool('create_project', { description: 'Create a Kineweft project, optionally copying the included demo.', inputSchema: { path: z.string(), example: z.string().optional() } }, async ({ path, example }) => withErrors(() => initProject(path, example)));
+  server.registerTool('inspect_project', { description: 'Read and validate a Kineweft project.', inputSchema: { path: z.string() } }, async ({ path }) => withErrors(() => inspectProject(path)));
+  server.registerTool('add_element', { description: 'Add one declarative text, image, or rectangle element to a project.', inputSchema: { path: z.string(), element: elementSchema } }, async ({ path, element }) => withErrors(() => addElement(path, element)));
+  server.registerTool('update_element', { description: 'Update an existing element by stable ID. ID and type remain fixed.', inputSchema: { path: z.string(), id: z.string(), patch: z.record(z.string(), z.unknown()) } }, async ({ path, id, patch }) => withErrors(() => updateElement(path, id, patch)));
+  server.registerTool('preview_frame', { description: 'Render one deterministic PNG frame at a time in seconds.', inputSchema: { path: z.string(), time: z.number().min(0), output: z.string() } }, async ({ path, time, output }) => withErrors(() => previewProject(path, time, output)));
+  server.registerTool('render_video', { description: 'Render the project to H.264 MP4 using local FFmpeg.', inputSchema: { path: z.string(), output: z.string() } }, async ({ path, output }) => withErrors(() => renderProject(path, output)));
+  return server;
+}
+serveStdio(buildServer, { onerror: error => console.error(`kineweft-mcp: ${error.message}`) });
