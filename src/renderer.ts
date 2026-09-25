@@ -1,10 +1,10 @@
-import { mkdir, mkdtemp, readFile, realpath, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, realpath, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 import { Resvg } from '@resvg/resvg-js';
-import type { Element, Project } from './model.js';
+import type { Element, Project, VisualElement } from './model.js';
+import { escapeXml, textNode } from './text.js';
 
-const escapeXml = (s: string) => s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&apos;');
 const clamp = (value: number) => Math.max(0, Math.min(1, value));
 function ease(value: number, easing: 'linear' | 'easeInCubic' | 'easeOutCubic' | 'easeInOutCubic') {
   const p = clamp(value);
@@ -18,41 +18,68 @@ function state(e: Element, t: number) {
   const entrance = e.animation ? ease((t - e.start) / e.animation.duration, e.animation.easing) : 1;
   const exitElapsed = e.exitAnimation ? clamp((t - (e.end - e.exitAnimation.duration)) / e.exitAnimation.duration) : 0;
   const leaving = e.exitAnimation ? ease(exitElapsed, e.exitAnimation.easing) : 0;
-  const entranceOffset = e.animation?.type === 'rise' ? (1 - entrance) * 32 : 0;
-  const exitOffset = e.exitAnimation?.type === 'rise' ? -leaving * 24 : 0;
-  return { opacity: e.opacity * entrance * (1 - leaving), dy: entranceOffset + exitOffset };
+  return { opacity: e.opacity * entrance * (1 - leaving), dy: (e.animation?.type === 'rise' ? (1 - entrance) * 32 : 0) - (e.exitAnimation?.type === 'rise' ? leaving * 24 : 0) };
 }
-async function safeAsset(root: string, src: string) {
-  if (path.isAbsolute(src)) throw new Error(`Image path must be relative to the project: ${src}`);
+export function resolveColor(project: Project, value: string): string {
+  return value.startsWith('$') ? project.tokens!.colors![value.slice(1)]! : value;
+}
+export type Drawable = { element: VisualElement; x: number; y: number; opacity: number; nominalOpacity: number; dy: number };
+export function drawablesAt(project: Project, time: number): Drawable[] {
+  const out: Drawable[] = [];
+  const visit = (e: Element, localTime: number, ox: number, oy: number, inheritedOpacity = 1, nominalOpacity = 1) => {
+    const s = state(e, localTime);
+    if (!s.opacity || !inheritedOpacity) return;
+    if (e.type === 'component') {
+      for (const child of project.components?.[e.name] ?? []) visit(child, localTime - e.start, ox + e.x, oy + e.y + s.dy, inheritedOpacity * s.opacity, nominalOpacity * e.opacity);
+    } else out.push({ element: e, x: ox + e.x, y: oy + e.y, opacity: inheritedOpacity * s.opacity, nominalOpacity: nominalOpacity * e.opacity, dy: s.dy });
+  };
+  project.elements.forEach(e => visit(e, time, 0, 0));
+  project.scenes?.forEach(scene => {
+    if (time >= scene.start && time < scene.start + scene.duration) scene.elements.forEach(e => visit(e, time - scene.start, 0, 0));
+  });
+  return out;
+}
+export async function safeAsset(root: string, src: string): Promise<string> {
+  if (path.isAbsolute(src) || /^[a-z]+:\/\//i.test(src)) throw new Error(`Asset path must be relative to the project: ${src}`);
   const rootReal = await realpath(root);
-  const assetReal = await realpath(path.resolve(rootReal, src));
-  if (assetReal !== rootReal && !assetReal.startsWith(rootReal + path.sep)) throw new Error(`Image path escapes the project directory: ${src}`);
+  let assetReal: string;
+  try { assetReal = await realpath(path.resolve(rootReal, src)); }
+  catch { throw new Error(`Asset not found: ${src}`); }
+  if (assetReal !== rootReal && !assetReal.startsWith(rootReal + path.sep)) throw new Error(`Asset path escapes the project directory: ${src}`);
   return assetReal;
 }
-async function svgFor(project: Project, projectFile: string, time: number): Promise<string> {
+function captionNodes(project: Project, time: number) {
+  const { width, height } = project.composition;
+  return (project.captions ?? []).filter(c => time >= c.start && time < c.end).map(c => {
+    const lines = c.text.split('\n');
+    const lineHeight = c.fontSize * 1.24;
+    const boxHeight = lines.length * lineHeight + 28;
+    const y = height - Math.max(64, height * 0.075) - boxHeight;
+    const text = lines.map((line, i) => `<tspan x="${width / 2}" y="${y + 22 + (i + 0.82) * lineHeight}">${escapeXml(line)}</tspan>`).join('');
+    return `<rect x="${width * 0.075}" y="${y}" width="${width * 0.85}" height="${boxHeight}" rx="12" fill="${resolveColor(project, c.background)}" opacity="0.88"/><text font-family="sans-serif" font-size="${c.fontSize}" font-weight="600" text-anchor="middle" fill="${resolveColor(project, c.color)}">${text}</text>`;
+  }).join('');
+}
+export async function svgFor(project: Project, projectFile: string, time: number, assetCache = new Map<string, string>()): Promise<string> {
   const comp = project.composition;
   const nodes: string[] = [];
-  for (const element of project.elements) {
-    const s = state(element, time);
-    if (!s.opacity) continue;
-    const transform = `translate(${element.x} ${element.y + s.dy})`;
-    if (element.type === 'rect') nodes.push(`<rect x="${element.x}" y="${element.y+s.dy}" width="${element.width}" height="${element.height}" rx="${element.radius}" fill="${element.color}" opacity="${s.opacity}"/>`);
-    else if (element.type === 'text') {
-      const lines = element.text.split('\n');
-      const anchor = element.align === 'middle' ? 'middle' : element.align === 'end' ? 'end' : 'start';
-      const x = element.align === 'middle' ? (element.width ?? 0)/2 : element.align === 'end' ? (element.width ?? 0) : 0;
-      const tspan = lines.map((line, i) => `<tspan x="${x}" dy="${i === 0 ? 0 : element.fontSize * element.lineHeight}">${escapeXml(line)}</tspan>`).join('');
-      nodes.push(`<text transform="${transform}" x="0" y="0" font-family="${escapeXml(element.fontFamily)}" font-size="${element.fontSize}" font-weight="${element.fontWeight}" letter-spacing="${element.letterSpacing}" text-anchor="${anchor}" fill="${element.color}" opacity="${s.opacity}">${tspan}</text>`);
-    } else {
+  for (const { element, x, y, opacity, dy } of drawablesAt(project, time)) {
+    if (element.type === 'rect') nodes.push(`<rect x="${x}" y="${y + dy}" width="${element.width}" height="${element.height}" rx="${element.radius}" fill="${resolveColor(project, element.color)}" opacity="${opacity}"/>`);
+    else if (element.type === 'text') nodes.push(textNode({ ...element, x, y, fontFamily: element.fontFamily.startsWith('$') ? project.tokens!.fonts![element.fontFamily.slice(1)]! : element.fontFamily }, opacity, dy, resolveColor(project, element.color)));
+    else {
       const asset = await safeAsset(path.dirname(projectFile), element.src);
-      const data = await readFile(asset);
       const ext = path.extname(asset).toLowerCase();
-      if (!['.png','.jpg','.jpeg','.webp','.svg'].includes(ext)) throw new Error(`Unsupported image type: ${ext || '(no extension)'}`);
-      const mime = ext === '.jpg' || ext === '.jpeg' ? 'image/jpeg' : ext === '.webp' ? 'image/webp' : ext === '.svg' ? 'image/svg+xml' : 'image/png';
-      nodes.push(`<image x="${element.x}" y="${element.y+s.dy}" width="${element.width}" height="${element.height}" href="data:${mime};base64,${data.toString('base64')}" preserveAspectRatio="${element.fit === 'cover' ? 'xMidYMid slice' : 'xMidYMid meet'}" opacity="${s.opacity}"/>`);
+      if (!['.png', '.jpg', '.jpeg', '.webp', '.svg'].includes(ext)) throw new Error(`Unsupported image type: ${ext || '(no extension)'}`);
+      let data = assetCache.get(asset);
+      if (!data) {
+        const bytes = await readFile(asset);
+        const mime = ext === '.jpg' || ext === '.jpeg' ? 'image/jpeg' : ext === '.webp' ? 'image/webp' : ext === '.svg' ? 'image/svg+xml' : 'image/png';
+        data = `data:${mime};base64,${bytes.toString('base64')}`;
+        assetCache.set(asset, data);
+      }
+      nodes.push(`<image x="${x}" y="${y + dy}" width="${element.width}" height="${element.height}" href="${data}" preserveAspectRatio="${element.fit === 'cover' ? 'xMidYMid slice' : 'xMidYMid meet'}" opacity="${opacity}"/>`);
     }
   }
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${comp.width}" height="${comp.height}" viewBox="0 0 ${comp.width} ${comp.height}"><rect width="100%" height="100%" fill="${comp.background}"/>${nodes.join('')}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${comp.width}" height="${comp.height}" viewBox="0 0 ${comp.width} ${comp.height}"><rect width="100%" height="100%" fill="${resolveColor(project, comp.background)}"/>${nodes.join('')}${captionNodes(project, time)}</svg>`;
 }
 export async function renderFrame(project: Project, projectFile: string, time: number, output: string) {
   const svg = await svgFor(project, projectFile, time);
@@ -60,26 +87,38 @@ export async function renderFrame(project: Project, projectFile: string, time: n
   await mkdir(path.dirname(path.resolve(output)), { recursive: true });
   await writeFile(output, png);
 }
-function run(program: string, args: string[]) {
-  return new Promise<void>((resolve, reject) => {
-    const child = spawn(program, args, { stdio: ['ignore', 'ignore', 'pipe'] });
-    let stderr = '';
-    child.stderr.setEncoding('utf8'); child.stderr.on('data', (part: string) => stderr += part);
-    child.on('error', e => reject(new Error(`Could not start ${program}: ${e.message}`)));
-    child.on('close', code => code === 0 ? resolve() : reject(new Error(`${program} exited with code ${code}: ${stderr.slice(-2000)}`)));
-  });
-}
 export async function renderVideo(project: Project, projectFile: string, output: string) {
   const frames = Math.ceil(project.composition.duration * project.composition.fps);
-  const tmp = await mkdtemp(path.join(process.env.TMPDIR ?? '/tmp', 'kineweft-'));
+  const fps = project.composition.fps;
+  const audio = project.audio ? await safeAsset(path.dirname(projectFile), project.audio.src) : undefined;
+  await mkdir(path.dirname(path.resolve(output)), { recursive: true });
+  const args = ['-hide_banner', '-loglevel', 'error', '-y', '-f', 'image2pipe', '-framerate', String(fps), '-vcodec', 'png', '-i', 'pipe:0'];
+  if (audio && project.audio) {
+    args.push('-i', audio, '-map', '0:v:0', '-map', '1:a:0', '-af', `volume=${project.audio.volume},adelay=${Math.round(project.audio.start * 1000)}:all=1,apad,atrim=0:${project.composition.duration}`, '-c:a', 'aac', '-b:a', '192k');
+  } else args.push('-an');
+  args.push('-frames:v', String(frames), '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', path.resolve(output));
+  const child = spawn('ffmpeg', args, { stdio: ['pipe', 'ignore', 'pipe'] });
+  child.stdin.on('error', () => undefined);
+  let stderr = '';
+  child.stderr.setEncoding('utf8');
+  child.stderr.on('data', (part: string) => { stderr = (stderr + part).slice(-4000); });
+  const completion = new Promise<void>((resolve, reject) => {
+    child.on('error', e => reject(new Error(`Could not start FFmpeg: ${e.message}`)));
+    child.on('close', code => code === 0 ? resolve() : reject(new Error(`FFmpeg exited with code ${code}: ${stderr}`)));
+  });
+  completion.catch(() => undefined);
+  const assetCache = new Map<string, string>();
   try {
     for (let frame = 0; frame < frames; frame++) {
-      const svg = await svgFor(project, projectFile, frame / project.composition.fps);
+      const svg = await svgFor(project, projectFile, frame / fps, assetCache);
       const png = new Resvg(svg, { fitTo: { mode: 'original' } }).render().asPng();
-      await writeFile(path.join(tmp, `frame-${String(frame).padStart(6,'0')}.png`), png);
+      await new Promise<void>((resolve, reject) => child.stdin.write(png, error => error ? reject(error) : resolve()));
     }
-    await mkdir(path.dirname(path.resolve(output)), { recursive: true });
-    const absoluteOutput = path.resolve(output);
-    await run('ffmpeg', ['-hide_banner','-loglevel','error','-y','-framerate',String(project.composition.fps),'-i',path.join(tmp,'frame-%06d.png'),'-frames:v',String(frames),'-c:v','libx264','-pix_fmt','yuv420p','-movflags','+faststart',absoluteOutput]);
-  } finally { await rm(tmp, { recursive: true, force: true }); }
+    child.stdin.end();
+    await completion;
+  } catch (error) {
+    child.kill();
+    await completion.catch(() => undefined);
+    throw error;
+  }
 }

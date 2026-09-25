@@ -1,0 +1,1955 @@
+{
+  "format": "kineweft",
+  "version": 2,
+  "composition": {
+    "width": 1080,
+    "height": 1350,
+    "fps": 24,
+    "duration": 18,
+    "background": "$canvas"
+  },
+  "elements": [
+    {
+      "id": "frame-top",
+      "type": "component",
+      "name": "frameRule",
+      "x": 64,
+      "y": 62,
+      "start": 0,
+      "end": 18,
+      "animation": {
+        "type": "fade",
+        "duration": 0.5
+      },
+      "exitAnimation": {
+        "type": "fade",
+        "duration": 0.4
+      }
+    },
+    {
+      "id": "frame-bottom",
+      "type": "component",
+      "name": "frameRule",
+      "x": 64,
+      "y": 1274,
+      "start": 0,
+      "end": 18,
+      "animation": {
+        "type": "fade",
+        "duration": 0.5
+      },
+      "exitAnimation": {
+        "type": "fade",
+        "duration": 0.4
+      }
+    },
+    {
+      "id": "brand-mark",
+      "type": "image",
+      "src": "brand/ephyro-mark.svg",
+      "x": 68,
+      "y": 88,
+      "width": 38,
+      "height": 38,
+      "fit": "contain",
+      "start": 0,
+      "end": 18,
+      "animation": {
+        "type": "fade",
+        "duration": 0.5
+      },
+      "exitAnimation": {
+        "type": "fade",
+        "duration": 0.4
+      }
+    },
+    {
+      "id": "brand",
+      "type": "text",
+      "text": "ephyro",
+      "x": 126,
+      "y": 120,
+      "fontSize": 31,
+      "fontWeight": 600,
+      "letterSpacing": -1.8,
+      "color": "$ivory",
+      "fontFamily": "$body",
+      "start": 0,
+      "end": 18,
+      "animation": {
+        "type": "fade",
+        "duration": 0.6
+      },
+      "exitAnimation": {
+        "type": "fade",
+        "duration": 0.4
+      }
+    },
+    {
+      "id": "brief",
+      "type": "text",
+      "text": "MODEL SELECTION GUIDE  /  REVIEWED SEP 2026",
+      "x": 560,
+      "y": 88,
+      "width": 456,
+      "align": "end",
+      "fontSize": 17,
+      "fontWeight": 700,
+      "letterSpacing": 2.2,
+      "color": "$secondary",
+      "fontFamily": "$body",
+      "start": 0,
+      "end": 18,
+      "animation": {
+        "type": "fade",
+        "duration": 0.7
+      },
+      "exitAnimation": {
+        "type": "fade",
+        "duration": 0.4
+      },
+      "height": 42,
+      "verticalAlign": "middle",
+      "fit": "shrink",
+      "minFontSize": 14
+    }
+  ],
+  "tokens": {
+    "colors": {
+      "canvas": "#173b32",
+      "border": "#496253",
+      "ivory": "#e8eedf",
+      "secondary": "#c1d0c4",
+      "muted": "#9fb2a2",
+      "accent": "#c8dda5",
+      "panel": "#315b4b",
+      "chart": "#668c46",
+      "deep": "#17372f"
+    },
+    "fonts": {
+      "body": "IBM Plex Sans",
+      "mono": "IBM Plex Mono"
+    }
+  },
+  "components": {
+    "frameRule": [
+      {
+        "id": "line",
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "width": 952,
+        "height": 2,
+        "color": "$border",
+        "start": 0,
+        "end": 18
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "scene-1",
+      "start": 0,
+      "duration": 2.9,
+      "elements": [
+        {
+          "id": "s1-kicker",
+          "type": "text",
+          "text": "A PRACTICAL MODEL GUIDE",
+          "x": 70,
+          "y": 312,
+          "fontSize": 20,
+          "fontWeight": 700,
+          "letterSpacing": 2.8,
+          "color": "$muted",
+          "fontFamily": "$body",
+          "start": 0.2,
+          "end": 2.9,
+          "animation": {
+            "type": "fade",
+            "duration": 0.5
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.4
+          }
+        },
+        {
+          "id": "s1-title-a",
+          "type": "text",
+          "text": "Choosing an open",
+          "x": 66,
+          "y": 478,
+          "fontSize": 92,
+          "fontWeight": 700,
+          "letterSpacing": -2.5,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.4,
+          "end": 2.9,
+          "animation": {
+            "type": "rise",
+            "duration": 0.72
+          },
+          "exitAnimation": {
+            "type": "rise",
+            "duration": 0.42
+          },
+          "colorGroup": "opening-headline"
+        },
+        {
+          "id": "s1-title-b",
+          "type": "text",
+          "text": "model? Start here.",
+          "x": 66,
+          "y": 590,
+          "fontSize": 102,
+          "fontWeight": 700,
+          "letterSpacing": -2.8,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.62,
+          "end": 2.9,
+          "animation": {
+            "type": "rise",
+            "duration": 0.75
+          },
+          "exitAnimation": {
+            "type": "rise",
+            "duration": 0.42
+          },
+          "colorGroup": "opening-headline"
+        },
+        {
+          "id": "s1-rule",
+          "type": "rect",
+          "x": 70,
+          "y": 664,
+          "width": 150,
+          "height": 6,
+          "color": "$accent",
+          "radius": 3,
+          "start": 0.9,
+          "end": 2.9,
+          "animation": {
+            "type": "fade",
+            "duration": 0.45
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.35
+          }
+        },
+        {
+          "id": "s1-body",
+          "type": "text",
+          "text": "The practical 2026 read on capability,\nefficiency, openness, and deployment fit.",
+          "x": 70,
+          "y": 765,
+          "fontSize": 34,
+          "fontWeight": 400,
+          "lineHeight": 1.42,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 1.05,
+          "end": 2.9,
+          "animation": {
+            "type": "rise",
+            "duration": 0.62
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.35
+          }
+        },
+        {
+          "id": "s1-chip-a",
+          "type": "rect",
+          "x": 70,
+          "y": 1000,
+          "width": 300,
+          "height": 94,
+          "color": "$panel",
+          "radius": 14,
+          "start": 1.35,
+          "end": 2.9,
+          "animation": {
+            "type": "rise",
+            "duration": 0.5
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s1-chip-b",
+          "type": "rect",
+          "x": 390,
+          "y": 1000,
+          "width": 300,
+          "height": 94,
+          "color": "$panel",
+          "radius": 14,
+          "start": 1.48,
+          "end": 2.9,
+          "animation": {
+            "type": "rise",
+            "duration": 0.5
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s1-chip-c",
+          "type": "rect",
+          "x": 710,
+          "y": 1000,
+          "width": 300,
+          "height": 94,
+          "color": "$panel",
+          "radius": 14,
+          "start": 1.61,
+          "end": 2.9,
+          "animation": {
+            "type": "rise",
+            "duration": 0.5
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s1-chip-a-text",
+          "type": "text",
+          "text": "CAPABILITY",
+          "x": 70,
+          "y": 1000,
+          "fontSize": 19,
+          "fontWeight": 700,
+          "letterSpacing": 2.2,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 1.52,
+          "end": 2.9,
+          "animation": {
+            "type": "fade",
+            "duration": 0.35
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 300,
+          "height": 94,
+          "align": "middle",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s1-chip-b-text",
+          "type": "text",
+          "text": "LICENSE",
+          "x": 390,
+          "y": 1000,
+          "fontSize": 19,
+          "fontWeight": 700,
+          "letterSpacing": 2.2,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 1.65,
+          "end": 2.9,
+          "animation": {
+            "type": "fade",
+            "duration": 0.35
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 300,
+          "height": 94,
+          "align": "middle",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s1-chip-c-text",
+          "type": "text",
+          "text": "DEPLOYMENT FIT",
+          "x": 710,
+          "y": 1000,
+          "fontSize": 19,
+          "fontWeight": 700,
+          "letterSpacing": 2,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 1.78,
+          "end": 2.9,
+          "animation": {
+            "type": "fade",
+            "duration": 0.35
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 300,
+          "height": 94,
+          "align": "middle",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        }
+      ]
+    },
+    {
+      "id": "scene-2",
+      "start": 2.8,
+      "duration": 3,
+      "elements": [
+        {
+          "id": "s2-kicker",
+          "type": "text",
+          "text": "01  /  LICENSES & TRANSPARENCY",
+          "x": 70,
+          "y": 270,
+          "fontSize": 20,
+          "fontWeight": 700,
+          "letterSpacing": 2.6,
+          "color": "$muted",
+          "fontFamily": "$body",
+          "start": 0,
+          "end": 3,
+          "animation": {
+            "type": "fade",
+            "duration": 0.48
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.38
+          }
+        },
+        {
+          "id": "s2-title",
+          "type": "text",
+          "text": "Licenses shape\nwhat you can ship.",
+          "x": 66,
+          "y": 406,
+          "fontSize": 86,
+          "fontWeight": 700,
+          "lineHeight": 1.08,
+          "letterSpacing": -2.4,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.15,
+          "end": 3,
+          "animation": {
+            "type": "rise",
+            "duration": 0.68
+          },
+          "exitAnimation": {
+            "type": "rise",
+            "duration": 0.4
+          }
+        },
+        {
+          "id": "s2-card-a",
+          "type": "rect",
+          "x": 70,
+          "y": 640,
+          "width": 292,
+          "height": 385,
+          "color": "$panel",
+          "radius": 18,
+          "start": 0.42,
+          "end": 3,
+          "animation": {
+            "type": "rise",
+            "duration": 0.58
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.34
+          }
+        },
+        {
+          "id": "s2-card-b",
+          "type": "rect",
+          "x": 394,
+          "y": 640,
+          "width": 292,
+          "height": 385,
+          "color": "$panel",
+          "radius": 18,
+          "start": 0.56,
+          "end": 3,
+          "animation": {
+            "type": "rise",
+            "duration": 0.58
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.34
+          }
+        },
+        {
+          "id": "s2-card-c",
+          "type": "rect",
+          "x": 718,
+          "y": 640,
+          "width": 292,
+          "height": 385,
+          "color": "$panel",
+          "radius": 18,
+          "start": 0.7,
+          "end": 3,
+          "animation": {
+            "type": "rise",
+            "duration": 0.58
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.34
+          }
+        },
+        {
+          "id": "s2-a-label",
+          "type": "text",
+          "text": "FULLY OPEN",
+          "x": 100,
+          "y": 676,
+          "fontSize": 16,
+          "fontWeight": 700,
+          "letterSpacing": 1.8,
+          "color": "$accent",
+          "fontFamily": "$body",
+          "start": 0.68,
+          "end": 3,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.28
+          },
+          "width": 232,
+          "height": 36,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s2-a-title",
+          "type": "text",
+          "text": "OLMo 3.1",
+          "x": 100,
+          "y": 748,
+          "fontSize": 39,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.78,
+          "end": 3,
+          "animation": {
+            "type": "rise",
+            "duration": 0.42
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.28
+          },
+          "width": 232,
+          "height": 58,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s2-a-body",
+          "type": "text",
+          "text": "data + code\nweights + recipes\nreproducible flow",
+          "x": 100,
+          "y": 822,
+          "fontSize": 22,
+          "fontWeight": 400,
+          "lineHeight": 1.45,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 0.92,
+          "end": 3,
+          "animation": {
+            "type": "fade",
+            "duration": 0.45
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.28
+          },
+          "width": 232,
+          "height": 142,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s2-b-label",
+          "type": "text",
+          "text": "PERMISSIVE",
+          "x": 424,
+          "y": 676,
+          "fontSize": 16,
+          "fontWeight": 700,
+          "letterSpacing": 1.8,
+          "color": "$accent",
+          "fontFamily": "$body",
+          "start": 0.82,
+          "end": 3,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.28
+          },
+          "width": 232,
+          "height": 36,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s2-b-title",
+          "type": "text",
+          "text": "Apache / MIT",
+          "x": 424,
+          "y": 748,
+          "fontSize": 34,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.92,
+          "end": 3,
+          "animation": {
+            "type": "rise",
+            "duration": 0.42
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.28
+          },
+          "width": 232,
+          "height": 58,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s2-b-body",
+          "type": "text",
+          "text": "commercial use\nmodify + redistribute\nverify checkpoint",
+          "x": 424,
+          "y": 822,
+          "fontSize": 22,
+          "fontWeight": 400,
+          "lineHeight": 1.45,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 1.06,
+          "end": 3,
+          "animation": {
+            "type": "fade",
+            "duration": 0.45
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.28
+          },
+          "width": 232,
+          "height": 142,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s2-c-label",
+          "type": "text",
+          "text": "CUSTOM LICENSE",
+          "x": 748,
+          "y": 676,
+          "fontSize": 16,
+          "fontWeight": 700,
+          "letterSpacing": 1.8,
+          "color": "$accent",
+          "fontFamily": "$body",
+          "start": 0.96,
+          "end": 3,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.28
+          },
+          "width": 232,
+          "height": 36,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s2-c-title",
+          "type": "text",
+          "text": "Review terms.",
+          "x": 748,
+          "y": 748,
+          "fontSize": 38,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 1.06,
+          "end": 3,
+          "animation": {
+            "type": "rise",
+            "duration": 0.42
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.28
+          },
+          "width": 232,
+          "height": 58,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s2-c-body",
+          "type": "text",
+          "text": "Qwen Flash Next\nQwen Max-class\nuse restrictions",
+          "x": 748,
+          "y": 822,
+          "fontSize": 22,
+          "fontWeight": 400,
+          "lineHeight": 1.45,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 1.2,
+          "end": 3,
+          "animation": {
+            "type": "fade",
+            "duration": 0.45
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.28
+          },
+          "width": 232,
+          "height": 142,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s2-caption",
+          "type": "text",
+          "text": "The license applies to the exact model checkpoint you use.",
+          "x": 70,
+          "y": 1125,
+          "fontSize": 28,
+          "fontWeight": 400,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 1.4,
+          "end": 3,
+          "animation": {
+            "type": "fade",
+            "duration": 0.55
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-3",
+      "start": 5.7,
+      "duration": 3.1,
+      "elements": [
+        {
+          "id": "s3-kicker",
+          "type": "text",
+          "text": "02  /  QWEN3.8  —  THREE LANES",
+          "x": 70,
+          "y": 270,
+          "fontSize": 20,
+          "fontWeight": 700,
+          "letterSpacing": 2.45,
+          "color": "$muted",
+          "fontFamily": "$body",
+          "start": 0,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.48
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.38
+          }
+        },
+        {
+          "id": "s3-title",
+          "type": "text",
+          "text": "Pick the lane,\nthen the model.",
+          "x": 66,
+          "y": 406,
+          "fontSize": 82,
+          "fontWeight": 700,
+          "lineHeight": 1.08,
+          "letterSpacing": -2.3,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.15,
+          "end": 3.1,
+          "animation": {
+            "type": "rise",
+            "duration": 0.65
+          },
+          "exitAnimation": {
+            "type": "rise",
+            "duration": 0.4
+          }
+        },
+        {
+          "id": "s3-row-a",
+          "type": "rect",
+          "x": 70,
+          "y": 632,
+          "width": 940,
+          "height": 132,
+          "color": "$panel",
+          "radius": 16,
+          "start": 0.42,
+          "end": 3.1,
+          "animation": {
+            "type": "rise",
+            "duration": 0.52
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s3-row-b",
+          "type": "rect",
+          "x": 70,
+          "y": 782,
+          "width": 940,
+          "height": 132,
+          "color": "$panel",
+          "radius": 16,
+          "start": 0.55,
+          "end": 3.1,
+          "animation": {
+            "type": "rise",
+            "duration": 0.52
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s3-row-c",
+          "type": "rect",
+          "x": 70,
+          "y": 932,
+          "width": 940,
+          "height": 132,
+          "color": "$panel",
+          "radius": 16,
+          "start": 0.68,
+          "end": 3.1,
+          "animation": {
+            "type": "rise",
+            "duration": 0.52
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s3-a-title",
+          "type": "text",
+          "text": "27B",
+          "x": 108,
+          "y": 632,
+          "fontSize": 45,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.65,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 160,
+          "height": 132,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s3-a-body",
+          "type": "text",
+          "text": "DENSE  ·  VISION  ·  262K  ·  APACHE-2.0",
+          "x": 286,
+          "y": 659,
+          "fontSize": 22,
+          "fontWeight": 700,
+          "letterSpacing": 1.15,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.75,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.42
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 665,
+          "height": 37,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s3-a-tag",
+          "type": "text",
+          "text": "ALL-ROUNDER",
+          "x": 286,
+          "y": 710,
+          "fontSize": 16,
+          "fontWeight": 700,
+          "letterSpacing": 2,
+          "color": "$accent",
+          "fontFamily": "$body",
+          "start": 0.85,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.4
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 665,
+          "height": 27,
+          "align": "end",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s3-b-title",
+          "type": "text",
+          "text": "FLASH",
+          "x": 108,
+          "y": 782,
+          "fontSize": 39,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.78,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 160,
+          "height": 132,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s3-b-body",
+          "type": "text",
+          "text": "125B / 6B ACTIVE  ·  VISION  ·  262K",
+          "x": 286,
+          "y": 809,
+          "fontSize": 22,
+          "fontWeight": 700,
+          "letterSpacing": 1.05,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.88,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.42
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 665,
+          "height": 37,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s3-b-tag",
+          "type": "text",
+          "text": "CUSTOM LICENSE",
+          "x": 286,
+          "y": 860,
+          "fontSize": 16,
+          "fontWeight": 700,
+          "letterSpacing": 1.8,
+          "color": "$accent",
+          "fontFamily": "$body",
+          "start": 0.98,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.4
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 665,
+          "height": 27,
+          "align": "end",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s3-c-title",
+          "type": "text",
+          "text": "MAX",
+          "x": 108,
+          "y": 932,
+          "fontSize": 42,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.91,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 160,
+          "height": 132,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s3-c-body",
+          "type": "text",
+          "text": "2.4T / 95B ACTIVE  ·  TEXT  ·  FRONTIER",
+          "x": 286,
+          "y": 959,
+          "fontSize": 22,
+          "fontWeight": 700,
+          "letterSpacing": 1.05,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 1.01,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.42
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 665,
+          "height": 37,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s3-c-tag",
+          "type": "text",
+          "text": "SERVER SCALE",
+          "x": 286,
+          "y": 1010,
+          "fontSize": 16,
+          "fontWeight": 700,
+          "letterSpacing": 2,
+          "color": "$accent",
+          "fontFamily": "$body",
+          "start": 1.11,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.4
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 665,
+          "height": 27,
+          "align": "end",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        }
+      ]
+    },
+    {
+      "id": "scene-4",
+      "start": 8.7,
+      "duration": 3.1,
+      "elements": [
+        {
+          "id": "s4-kicker",
+          "type": "text",
+          "text": "03  /  MODEL CARD SCORES  ·  ONE BENCHMARK",
+          "x": 70,
+          "y": 270,
+          "fontSize": 20,
+          "fontWeight": 700,
+          "letterSpacing": 2.15,
+          "color": "$muted",
+          "fontFamily": "$body",
+          "start": 0,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.48
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.38
+          }
+        },
+        {
+          "id": "s4-title",
+          "type": "text",
+          "text": "Agentic coding\nis the headline.",
+          "x": 66,
+          "y": 406,
+          "fontSize": 82,
+          "fontWeight": 700,
+          "lineHeight": 1.08,
+          "letterSpacing": -2.3,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.15,
+          "end": 3.1,
+          "animation": {
+            "type": "rise",
+            "duration": 0.65
+          },
+          "exitAnimation": {
+            "type": "rise",
+            "duration": 0.4
+          }
+        },
+        {
+          "id": "s4-metric",
+          "type": "text",
+          "text": "SWE-BENCH PRO",
+          "x": 70,
+          "y": 650,
+          "fontSize": 19,
+          "fontWeight": 700,
+          "letterSpacing": 2.4,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 0.4,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.45
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s4-bar-a",
+          "type": "rect",
+          "x": 330,
+          "y": 701,
+          "width": 625,
+          "height": 68,
+          "color": "$chart",
+          "radius": 12,
+          "start": 0.58,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.5
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s4-bar-b",
+          "type": "rect",
+          "x": 330,
+          "y": 801,
+          "width": 617,
+          "height": 68,
+          "color": "$chart",
+          "radius": 12,
+          "start": 0.72,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.5
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s4-bar-c",
+          "type": "rect",
+          "x": 330,
+          "y": 901,
+          "width": 560,
+          "height": 68,
+          "color": "$chart",
+          "radius": 12,
+          "start": 0.86,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.5
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s4-name-a",
+          "type": "text",
+          "text": "QWEN FLASH",
+          "x": 70,
+          "y": 746,
+          "fontSize": 24,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.68,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.4
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          }
+        },
+        {
+          "id": "s4-name-b",
+          "type": "text",
+          "text": "QWEN 27B",
+          "x": 70,
+          "y": 846,
+          "fontSize": 24,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.82,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.4
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          }
+        },
+        {
+          "id": "s4-name-c",
+          "type": "text",
+          "text": "DEEPSEEK V4",
+          "x": 70,
+          "y": 946,
+          "fontSize": 24,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.96,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.4
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          }
+        },
+        {
+          "id": "s4-score-a",
+          "type": "text",
+          "text": "62.5",
+          "x": 865,
+          "y": 747,
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "$deep",
+          "fontFamily": "$body",
+          "start": 0.8,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.35
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          }
+        },
+        {
+          "id": "s4-score-b",
+          "type": "text",
+          "text": "61.7",
+          "x": 857,
+          "y": 847,
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "$deep",
+          "fontFamily": "$body",
+          "start": 0.94,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.35
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          }
+        },
+        {
+          "id": "s4-score-c",
+          "type": "text",
+          "text": "56.0",
+          "x": 800,
+          "y": 947,
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "$deep",
+          "fontFamily": "$body",
+          "start": 1.08,
+          "end": 3.1,
+          "animation": {
+            "type": "fade",
+            "duration": 0.35
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          }
+        },
+        {
+          "id": "s4-note",
+          "type": "text",
+          "text": "Vendor-reported results. Harnesses and prompts matter.\nValidate on your own workload.",
+          "x": 70,
+          "y": 1081,
+          "fontSize": 25,
+          "fontWeight": 400,
+          "lineHeight": 1.4,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 1.2,
+          "end": 3.1,
+          "animation": {
+            "type": "rise",
+            "duration": 0.55
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-5",
+      "start": 11.7,
+      "duration": 3.55,
+      "elements": [
+        {
+          "id": "s5-kicker",
+          "type": "text",
+          "text": "04  /  PICKS BY WORKLOAD",
+          "x": 70,
+          "y": 248,
+          "fontSize": 20,
+          "fontWeight": 700,
+          "letterSpacing": 2.45,
+          "color": "$muted",
+          "fontFamily": "$body",
+          "start": 0,
+          "end": 3.55,
+          "animation": {
+            "type": "fade",
+            "duration": 0.48
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.38
+          }
+        },
+        {
+          "id": "s5-title",
+          "type": "text",
+          "text": "There is no\none winner.",
+          "x": 66,
+          "y": 370,
+          "fontSize": 78,
+          "fontWeight": 700,
+          "lineHeight": 1.06,
+          "letterSpacing": -2.2,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.15,
+          "end": 3.55,
+          "animation": {
+            "type": "rise",
+            "duration": 0.62
+          },
+          "exitAnimation": {
+            "type": "rise",
+            "duration": 0.4
+          }
+        },
+        {
+          "id": "s5-panel",
+          "type": "rect",
+          "x": 70,
+          "y": 565,
+          "width": 940,
+          "height": 552,
+          "color": "$panel",
+          "radius": 20,
+          "start": 0.4,
+          "end": 3.55,
+          "animation": {
+            "type": "rise",
+            "duration": 0.62
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.34
+          }
+        },
+        {
+          "id": "s5-line1",
+          "type": "text",
+          "text": "LOCAL MULTIMODAL",
+          "x": 112,
+          "y": 603,
+          "fontSize": 18,
+          "fontWeight": 700,
+          "letterSpacing": 1.8,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 0.64,
+          "end": 3.55,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 460,
+          "height": 72,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s5-pick1",
+          "type": "text",
+          "text": "Qwen3.8 27B",
+          "x": 615,
+          "y": 603,
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "$accent",
+          "fontFamily": "$body",
+          "start": 0.73,
+          "end": 3.55,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 351,
+          "height": 72,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s5-line2",
+          "type": "text",
+          "text": "EFFICIENT MULTIMODAL SERVER",
+          "x": 112,
+          "y": 701,
+          "fontSize": 18,
+          "fontWeight": 700,
+          "letterSpacing": 1.5,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 0.8,
+          "end": 3.55,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 460,
+          "height": 72,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s5-pick2",
+          "type": "text",
+          "text": "Mistral Small 4",
+          "x": 615,
+          "y": 701,
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.89,
+          "end": 3.55,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 351,
+          "height": 72,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s5-line3",
+          "type": "text",
+          "text": "SCALED CODING AGENT",
+          "x": 112,
+          "y": 799,
+          "fontSize": 18,
+          "fontWeight": 700,
+          "letterSpacing": 1.7,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 0.96,
+          "end": 3.55,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 460,
+          "height": 72,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s5-pick3",
+          "type": "text",
+          "text": "DeepSeek V4 Flash",
+          "x": 615,
+          "y": 799,
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 1.05,
+          "end": 3.55,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 351,
+          "height": 72,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s5-line4",
+          "type": "text",
+          "text": "FULLY OPEN RESEARCH",
+          "x": 112,
+          "y": 897,
+          "fontSize": 18,
+          "fontWeight": 700,
+          "letterSpacing": 1.75,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 1.12,
+          "end": 3.55,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 460,
+          "height": 72,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s5-pick4",
+          "type": "text",
+          "text": "OLMo 3.1 32B",
+          "x": 615,
+          "y": 897,
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 1.21,
+          "end": 3.55,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 351,
+          "height": 72,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s5-line5",
+          "type": "text",
+          "text": "SMALL BUSINESS WORKFLOWS",
+          "x": 112,
+          "y": 995,
+          "fontSize": 18,
+          "fontWeight": 700,
+          "letterSpacing": 1.55,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 1.28,
+          "end": 3.55,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 460,
+          "height": 72,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s5-pick5",
+          "type": "text",
+          "text": "Granite 4.2 8B",
+          "x": 615,
+          "y": 995,
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 1.37,
+          "end": 3.55,
+          "animation": {
+            "type": "fade",
+            "duration": 0.38
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.25
+          },
+          "width": 351,
+          "height": 72,
+          "align": "start",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        }
+      ]
+    },
+    {
+      "id": "scene-6",
+      "start": 15.15,
+      "duration": 2.85,
+      "elements": [
+        {
+          "id": "s6-kicker",
+          "type": "text",
+          "text": "A PRACTICAL STARTING POINT",
+          "x": 70,
+          "y": 304,
+          "fontSize": 20,
+          "fontWeight": 700,
+          "letterSpacing": 2.8,
+          "color": "$muted",
+          "fontFamily": "$body",
+          "start": 0,
+          "end": 2.85,
+          "animation": {
+            "type": "fade",
+            "duration": 0.45
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.35
+          }
+        },
+        {
+          "id": "s6-title",
+          "type": "text",
+          "text": "Best model =\nbest fit.",
+          "x": 66,
+          "y": 477,
+          "fontSize": 104,
+          "fontWeight": 700,
+          "lineHeight": 1.02,
+          "letterSpacing": -2.8,
+          "color": "$ivory",
+          "fontFamily": "$body",
+          "start": 0.13,
+          "end": 2.85,
+          "animation": {
+            "type": "rise",
+            "duration": 0.65
+          },
+          "exitAnimation": {
+            "type": "rise",
+            "duration": 0.35
+          }
+        },
+        {
+          "id": "s6-rule",
+          "type": "rect",
+          "x": 70,
+          "y": 648,
+          "width": 170,
+          "height": 7,
+          "color": "$accent",
+          "radius": 4,
+          "start": 0.37,
+          "end": 2.85,
+          "animation": {
+            "type": "fade",
+            "duration": 0.42
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s6-body",
+          "type": "text",
+          "text": "Start with Qwen3.8-27B.\nSwitch when license, hardware, or workload says so.",
+          "x": 70,
+          "y": 756,
+          "fontSize": 34,
+          "fontWeight": 400,
+          "lineHeight": 1.42,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 0.55,
+          "end": 2.85,
+          "animation": {
+            "type": "rise",
+            "duration": 0.58
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s6-callout",
+          "type": "rect",
+          "x": 70,
+          "y": 953,
+          "width": 940,
+          "height": 132,
+          "color": "$panel",
+          "radius": 16,
+          "start": 0.8,
+          "end": 2.85,
+          "animation": {
+            "type": "rise",
+            "duration": 0.52
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.3
+          }
+        },
+        {
+          "id": "s6-callout-text",
+          "type": "text",
+          "text": "BENCHMARK YOUR OWN TASKS.",
+          "x": 70,
+          "y": 953,
+          "fontSize": 29,
+          "fontWeight": 700,
+          "letterSpacing": 2.2,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 1,
+          "end": 2.85,
+          "animation": {
+            "type": "fade",
+            "duration": 0.45
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.28
+          },
+          "width": 940,
+          "height": 132,
+          "align": "middle",
+          "verticalAlign": "middle",
+          "fit": "shrink",
+          "minFontSize": 14
+        },
+        {
+          "id": "s6-source",
+          "type": "text",
+          "text": "SOURCE REVIEW  /  24 SEP 2026",
+          "x": 70,
+          "y": 1178,
+          "fontSize": 17,
+          "fontWeight": 700,
+          "letterSpacing": 2,
+          "color": "$secondary",
+          "fontFamily": "$body",
+          "start": 1.2,
+          "end": 2.85,
+          "animation": {
+            "type": "fade",
+            "duration": 0.5
+          },
+          "exitAnimation": {
+            "type": "fade",
+            "duration": 0.28
+          }
+        }
+      ]
+    }
+  ],
+  "quality": {
+    "minTextContrast": 4.5,
+    "minLargeTextContrast": 3,
+    "minSurfaceContrast": 1.4,
+    "enforceContrast": true,
+    "enforcePalette": true
+  }
+}

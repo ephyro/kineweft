@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <title>Ephyro — connected paths</title>
+  <g stroke="#e8eedf" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M39 8H24C15.163 8 8 15.163 8 24H25"/>
+    <path d="M9 40H24C32.837 40 40 32.837 40 24"/>
+  </g>
+</svg>
